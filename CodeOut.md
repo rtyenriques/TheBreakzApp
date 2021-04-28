@@ -45,7 +45,9 @@ only the user be able to see this its not shareable
 
 /combos/deploy=>generates and deploys static site 
 
-
+notes dont forget to mount controllers
+cookie is remmembered by session
+helpers is a sinatra method accessible to views and controllers
 
 
 
