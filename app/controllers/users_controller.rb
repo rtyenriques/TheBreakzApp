@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
     
     get '/register' do
+        if logged_in?
+        redirect '/'
         erb :'users/new'
+        end
       end
     
       post '/users' do
@@ -10,7 +13,7 @@ class UsersController < ApplicationController
         @user.password = params[:password]
     
         if @user.save
-          redirect "/"
+          redirect "/login"
         else
           erb :'users/new'
         end

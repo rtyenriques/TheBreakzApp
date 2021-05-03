@@ -14,5 +14,7 @@ db = {
 
 set :database, db
 
+require 'rack-flash'
+
 require './app/controllers/application_controller'
 require_all 'app'

@@ -1,7 +1,7 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  # use Rack::Flash
+  use Rack::Flash
 
   configure do
     enable :sessions
@@ -22,6 +22,7 @@ class ApplicationController < Sinatra::Base
       #if current user returns nil !nil = true !true => false 
       #!!to honest to god true of false 
       #<user> => true => false =>true using return value from current_user
+      #converting a truthy or falsey
     end
 
     def current_user
@@ -34,12 +35,14 @@ class ApplicationController < Sinatra::Base
       
     
 
-    # def authentication_required
-    #   if !logged_in?
-    #     flash[:notice] = "You must be logged in."
-    #     redirect '/'
-    #   end
-    # end
+    def authentication_required
+      if !logged_in?
+        flash[:notice] = "You must be logged in."
+         
+        redirect '/'
+      end
+    
+    end
 
   
 end

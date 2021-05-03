@@ -1,10 +1,18 @@
 Step 1
 User Functionality
+Step 2
+Create Combos
+id  name  user_id
+Work on Routes
+combos/new
 
 /register
 /login
 /logout
 
+
+ <!--<%- "<div class="notice">#{flash[:notice]}</div>" if flash[:notice] %> -->
+  
 
 
 
