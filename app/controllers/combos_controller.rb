@@ -9,19 +9,21 @@ class CombosController < ApplicationController
         erb :"combos/index"
         else
         authentication_required
-        erb :'users/login'
-        
         end
-       
+     end
 
-
-    end
-
+  
     
 
     get '/combos/new' do
       erb :"combos/new"
       
+    end
+
+    get '/combos/:id' do
+        @combo = current_user.combos.find_by(params[:id])
+        erb :"/combos/show"
+
     end
 
     post '/combos' do
