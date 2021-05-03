@@ -4,12 +4,8 @@ class CombosController < ApplicationController
     end
 
     get '/combos' do
-        if logged_in?
         @combo = current_user.combos
         erb :"combos/index"
-        else
-        authentication_required
-        end
      end
 
   
@@ -21,7 +17,7 @@ class CombosController < ApplicationController
     end
 
     get '/combos/:id' do
-        @combo = current_user.combos.find_by(params[:id])
+        @combo = current_user.combos.find(params[:id])
         erb :"/combos/show"
 
     end
@@ -41,9 +37,34 @@ class CombosController < ApplicationController
         else
             erb :"combos/new"
         end
-    
-
     end
+
+    # post '/combos/:id/moves' do
+    #     @combo = current_user.combos.find(params[:id])
+    #     @move = Move.new(:move_name => params[:move_name])
+        
+    #     if @move.save
+    #       @combo.moves << @move
+    #       redirect "/combos/#{@combo.id}"
+    #     else
+    #       erb :"/combos/show"
+    #     end
+    
+    #   end
+
+    post '/combos/:id/moves' do
+        @combo = current_user.combos.find(params[:id])
+        @move = @combo.moves.create(:move_name => params[:move_name])
+        
+        if @move.save
+          
+          redirect "/combos/#{@combo.id}"
+        else
+          erb :"/combos/show"
+        end
+    
+      end
+
 
    
 

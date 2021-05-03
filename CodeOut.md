@@ -5,11 +5,12 @@ Create Combos
 id  name  user_id
 Work on Routes
 combos/new
+adding moves to combos
 
 /register
 /login
 /logout
-
+\
 
  <!--<%- "<div class="notice">#{flash[:notice]}</div>" if flash[:notice] %> -->
   
@@ -70,3 +71,9 @@ Changes to Corneal
 
 
 set databases need to be structured
+
+
+
+Generate migration
+Create Model
+Tux to test
