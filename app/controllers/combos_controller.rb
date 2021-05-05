@@ -24,6 +24,7 @@ class CombosController < ApplicationController
 
     end
 
+ 
     post '/combos' do
         
        
@@ -50,13 +51,13 @@ class CombosController < ApplicationController
       end
 
     get'/combos/:id/edit' do
-        @combo = current_user.combos.find_by(params[:id])
+        @combo = current_user.combos.find(params[:id])
     
         erb :"/combos/edit"
       end
 
     patch '/combos/:id' do
-        @combo = current_user.combos.find_by(params[:id])
+        @combo = current_user.combos.find(params[:id])
         @combo.name = params[:name]
         
         @combo.save
