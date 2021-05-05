@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     get '/register' do
         if logged_in?
         redirect '/'
+        else
         erb :'users/new'
         end
       end

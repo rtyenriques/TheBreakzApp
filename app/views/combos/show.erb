@@ -10,3 +10,10 @@
     <input type="text" name="move_name" />
     <input type="submit" value="Add Move">
   </form>
+
+  <a href="/combos/<%= @combo.id %>/edit">Edit Combo</a>
+
+  <form method='post' action="/combos/<%=@combo.id%>" >
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input id="delete" value='delete' type='submit'>
+</form>

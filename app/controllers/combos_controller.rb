@@ -2,6 +2,8 @@ class CombosController < ApplicationController
     before '/combos/*' do
     authentication_required
     end
+    use Rack::MethodOverride
+    set :method_override, true
 
     get '/combos' do
         @combo = current_user.combos
@@ -38,6 +40,28 @@ class CombosController < ApplicationController
             erb :"combos/new"
         end
     end
+
+    
+
+    delete '/combos/:id' do
+        @combo = current_user.combos.find(params[:id])
+        @combo.destroy
+        redirect to "/combos"
+      end
+
+    get'/combos/:id/edit' do
+        @combo = current_user.combos.find_by(params[:id])
+    
+        erb :"/combos/edit"
+      end
+
+    patch '/combos/:id' do
+        @combo = current_user.combos.find_by(params[:id])
+        @combo.name = params[:name]
+        
+        @combo.save
+        redirect to "/combos/#{@combo.id}"
+      end
 
     # post '/combos/:id/moves' do
     #     @combo = current_user.combos.find(params[:id])
