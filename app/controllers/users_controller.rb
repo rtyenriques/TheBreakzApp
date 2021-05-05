@@ -57,9 +57,19 @@ class UsersController < ApplicationController
       delete '/users/:id' do
         @user = User.find_by_id(params[:id])
         if logged_in? && @user == current_user
+
           @user.combos.each do |combos|
-            combos.delete
+            @moves = combos.moves
+          @moves.each do |moves|
+              moves.destroy
           end
+        end
+        
+            @user.combos.each do |combos|
+              combos.destroy
+            end
+          
+          
           @user.delete
           session.clear
           redirect to '/'

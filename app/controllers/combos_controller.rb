@@ -2,8 +2,7 @@ class CombosController < ApplicationController
     before '/combos/*' do
     authentication_required
     end
-    use Rack::MethodOverride
-    set :method_override, true
+ 
 
     get '/combos' do
         @combo = current_user.combos
@@ -45,7 +44,13 @@ class CombosController < ApplicationController
     
 
     delete '/combos/:id' do
+
         @combo = current_user.combos.find(params[:id])
+        @moves = @combo.moves
+        @moves.each do |moves|
+            moves.destroy
+        end
+       
         @combo.destroy
         redirect to "/combos"
       end

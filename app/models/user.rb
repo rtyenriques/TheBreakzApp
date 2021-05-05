@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :combos
+  has_many :moves, through: :combos
+ 
   has_secure_password
 
 
