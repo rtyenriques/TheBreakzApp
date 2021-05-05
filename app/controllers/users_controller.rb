@@ -7,6 +7,13 @@ class UsersController < ApplicationController
         erb :'users/new'
         end
       end
+
+      # get '/users' do
+      #   @user = current_user
+      #   erb :'/users/show'
+
+      # end
+
     
       post '/users' do
         @user = User.new
@@ -37,9 +44,29 @@ class UsersController < ApplicationController
         end
       end
 
+     
+
+
+
       get '/logout' do
         session.clear
         redirect'/'
       end
+
+
+      delete '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        if logged_in? && @user == current_user
+          @user.combos.each do |combos|
+            combos.delete
+          end
+          @user.delete
+          session.clear
+          redirect to '/'
+        else
+          redirect to '/login'
+        end
+     end
+
 
 end

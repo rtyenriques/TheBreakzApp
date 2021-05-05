@@ -2,6 +2,7 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
   use Rack::Flash
+  use Rack::MethodOverride
   set :method_override, true
 
   configure do
