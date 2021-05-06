@@ -1,1 +1,12 @@
-<%=@user.email%>
+<h3>Welcome <%=@user.email%> to your profile at The Breaks App!</h3>
+
+
+
+<p><a href="/users/<%=@user.id%>/edit">Edit your account</a></p>
+
+
+<form method='post' action="/users/<%=@user.id%>" >
+<input id="hidden" type="hidden" name="_method" value="delete">
+<input id="delete" value='Delete Account' type='submit'>
+
+</form>

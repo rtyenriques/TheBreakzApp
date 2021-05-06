@@ -4,16 +4,17 @@
   <% @combo.moves.each do |move| %>
   <li><%= move.move_name %></li>
   <% end %>
-  </ol>
+</ol>
 
   <form action="/combos/<%= @combo.id %>/moves" method="POST">
     <input type="text" name="move_name" />
     <input type="submit" value="Add Move">
   </form>
 
-  <a href="/combos/<%= @combo.id %>/edit">Edit Combo</a>
+ <br>
+  <a href="/combos/<%= @combo.id %>/edit">Edit Combo Name</a>
 
-  <form method='post' action="/combos/<%=@combo.id%>" >
+<form method='post' action="/combos/<%=@combo.id%>" >
         <input id="hidden" type="hidden" name="_method" value="delete">
-        <input id="delete" value='delete' type='submit'>
+        <input id="delete" value='Delete Combo' type='submit'>
 </form>

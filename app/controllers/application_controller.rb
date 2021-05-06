@@ -18,12 +18,6 @@ class ApplicationController < Sinatra::Base
   end
 
 
-
-
-
-
-
-
   helpers do
     def logged_in?
       !!current_user
@@ -37,20 +31,14 @@ class ApplicationController < Sinatra::Base
       #if there is a value in session user try to find a user whose session is equal
       #if @user if not populated then will find and if its nil
       @user ||= User.find(session[:user_id]) if session[:user_id]
+      end
     end
-
-  end
       
-    
-
     def authentication_required
       if !logged_in?
         flash[:notice] = "You must be logged in."
          
         redirect '/'
       end
-    
     end
-
-  
-end
+  end

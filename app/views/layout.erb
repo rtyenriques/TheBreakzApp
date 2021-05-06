@@ -25,16 +25,14 @@
     <nav>
     <% if logged_in? %>
     Logged in as: <strong><%= current_user.email %> </strong>|
-
     <a href="/">Home</a> |
+    <a href="/users/<%=current_user.id%>">Profile</a> |
     <a href="/combos">Combos</a> |
-    <a href="/combos/new">New Combo</a> |
+    <a href="/combos/new">Create Combo</a> |
     <a href="/logout">Logout</a> 
-      <form method='post' action="/users/<%=@user.id%>" >
-        <input id="hidden" type="hidden" name="_method" value="delete">
-        <input id="delete" value='delete account' type='submit'>
-</form>
+     
     <% else %>
+    <a href="/">Home</a> |
     <a href="/register">Register</a> | 
     <a href="/login">Login</a>
     <% end %>

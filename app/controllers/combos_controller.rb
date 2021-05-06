@@ -9,65 +9,48 @@ class CombosController < ApplicationController
         erb :"combos/index"
      end
 
-  
-    
-
     get '/combos/new' do
       erb :"combos/new"
-      
     end
 
     get '/combos/:id' do
-        @combo = current_user.combos.find(params[:id])
-        erb :"/combos/show"
-
+      @combo = current_user.combos.find(params[:id])
+      erb :"/combos/show"
     end
 
- 
     post '/combos' do
-        
-       
-       
-        @combo = Combo.new
-        @combo.name = params[:name]
-        @combo.user_id = current_user.id
-        
-        #creating a belongs to equal to current user
-
+      @combo = Combo.new
+      @combo.name = params[:name]
+      @combo.user_id = current_user.id
+      #creating a belongs to equal to current user
         if @combo.save
-            redirect '/combos'
+          redirect '/combos'
         else
-            erb :"combos/new"
+          erb :"combos/new"
         end
-    end
-
-    
+      end
 
     delete '/combos/:id' do
-
-        @combo = current_user.combos.find(params[:id])
-        @moves = @combo.moves
-        @moves.each do |moves|
-            moves.destroy
-        end
-       
-        @combo.destroy
-        redirect to "/combos"
+      @combo = current_user.combos.find(params[:id])
+      @moves = @combo.moves
+      @moves.each do |moves|
+        moves.destroy
+      end
+       @combo.destroy
+       redirect to "/combos"
       end
 
     get'/combos/:id/edit' do
-        @combo = current_user.combos.find(params[:id])
-    
-        erb :"/combos/edit"
-      end
+      @combo = current_user.combos.find(params[:id])
+      erb :"/combos/edit"
+    end
 
     patch '/combos/:id' do
-        @combo = current_user.combos.find(params[:id])
-        @combo.name = params[:name]
-        
-        @combo.save
-        redirect to "/combos/#{@combo.id}"
-      end
+      @combo = current_user.combos.find(params[:id])
+      @combo.name = params[:name]
+      @combo.save
+      redirect to "/combos/#{@combo.id}"
+    end
 
     # post '/combos/:id/moves' do
     #     @combo = current_user.combos.find(params[:id])
@@ -83,21 +66,13 @@ class CombosController < ApplicationController
     #   end
 
     post '/combos/:id/moves' do
-        @combo = current_user.combos.find(params[:id])
-        @move = @combo.moves.create(:move_name => params[:move_name])
-        
+      @combo = current_user.combos.find(params[:id])
+      @move = @combo.moves.create(:move_name => params[:move_name])
         if @move.save
-          
           redirect "/combos/#{@combo.id}"
         else
           erb :"/combos/show"
         end
-    
-      end
-
-
-   
-
-    
-
-end
+    end
+  
+  end
