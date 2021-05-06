@@ -2,9 +2,18 @@ Hey Everyone this is my second project fof Flatiron using Sinatra and ActiveReco
 
 Steps to run The Breakz App
 
-download or clone The Breakz App 
-cd into the concertz-sinatra-project directory
-run bundle install in your console
-run shotgun
-open your favorite browser and enter the given local url provided by the shotgun server
+1.Download or clone The Breakz App
+
+2.cd into the The Breakz App directory
+
+3.run bundle install in your console
+
+4.run shotgun
+
+5.open your browser and enter the given local url provided by shotgun server
+
+6.Register your self as a user with an email and password
+
+7.Start creating combos which you can add moves too
+
 
